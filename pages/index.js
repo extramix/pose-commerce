@@ -12,7 +12,7 @@ export default function Home() {
       <title>Pose. | FREEDOM-focused Clothing brands</title>
     </Head>
     <h1 className="px-10 py-7 text-5xl text-green-600">EXPLORE YOUR FREEDOM.</h1>
-    <p className="px-10 py-7 text-3xl text-gray-800">With this season’s collections, your imagination is endless. Explore our new collections starting from today.</p>
+    <p className="px-10 py-7 text-2xl text-gray-800">With this season’s collections, your imagination is endless. Explore our new collections starting from today.</p>
 
       {Products.map(product => {
         <div className="">
