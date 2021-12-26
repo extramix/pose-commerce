@@ -1,9 +1,11 @@
 import React from 'react'
+import { useRouter } from 'next/router'
 
-export default function productId() {
-    return (
-        <div>
-            
-        </div>
-    )
-}
+const Product = () => {
+    const router = useRouter()
+    const { productId } = router.query
+  
+    return <p>Product: {productId}</p>
+  }
+  
+  export default Product
