@@ -22,15 +22,9 @@ export default function Home() {
 
       <div className="grid grid-cols-3 gap-4 p-12 ">
         {Products.map((product) => (
-          <Link href={`/products/${product.id}`} passHref key={product.id}>
-            <div key={product.id}>
-              <ProductCard
-                src={product.src}
-                price={product.price}
-                name={product.name}
-              />
-            </div>
-          </Link>
+          <div key={product.id}>
+            <ProductCard product={product} />
+          </div>
         ))}
       </div>
     </>

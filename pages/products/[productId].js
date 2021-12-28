@@ -12,6 +12,8 @@ const Product = () => {
     (product) => parseInt(productId) === parseInt(product.id)
   );
 
+  const onClick = () => console.log("clicked");
+
   return (
     <>
       <Link href="/" passHref>
@@ -32,7 +34,10 @@ const Product = () => {
           <p className="text-4xl mb-2">{product.name}</p>
           <p className="text-xl mb-4">{product.description}</p>
           <p className="text-xl font-bold mb-7">{product.price}</p>
-          <button className="bg-green-500 hover:bg-green-400 hover:border-green-400 text-white font-bold py-2 px-4 border border-green-500 rounded">
+          <button
+            onClick={onClick}
+            className="bg-green-500 hover:bg-green-400 hover:border-green-400 text-white font-bold py-2 px-4 border border-green-500 rounded"
+          >
             Add to Bag
           </button>
         </div>

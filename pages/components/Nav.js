@@ -1,6 +1,13 @@
-import React from "react";
+import { useState } from "react";
 import Link from "next/link";
+
+import { Icon } from "@iconify/react";
+
+import Modal from "./Modal";
+
 export default function Nav() {
+  const [showModal, setShowModal] = useState(false);
+
   return (
     <div>
       <nav className="flex items-center justify-between flex-wrap bg-gray-100 p-4 mb-5 drop-shadow-md">
@@ -26,15 +33,25 @@ export default function Nav() {
           <div>
             <a
               href="#responsive-header"
+              onClick={() => setShowModal(true)}
               className="block mt-4 lg:inline-block lg:mt-0 text-gray-800 hover:text-gray-400 mr-4"
             >
               Sign in
             </a>
+            <div>
+              <Modal showModal={showModal} />
+            </div>
+
             <a
               href="#responsive-header"
-              className="block mt-4 lg:inline-block lg:mt-0 text-gray-800 hover:text-gray-400 mr-4"
+              className="inline-block mt-4 lg:inline-block lg:mt-0 text-gray-800 hover:text-gray-400 mr-4"
             >
-              Bag
+              <div className="static">
+                <Icon icon="bx:bxs-shopping-bags" width="25" height="25" />
+                <span className="absolute right-7 bottom-4 bg-red-500 text-xs text-white px-1 rounded-xl">
+                  1
+                </span>
+              </div>
             </a>
           </div>
         </div>
