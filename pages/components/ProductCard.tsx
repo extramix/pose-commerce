@@ -1,5 +1,7 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useEffect, useContext } from "react";
+import { DataContext } from "../../store/GlobalState";
+import { addToCart } from "../../store/Actions";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -7,36 +9,8 @@ import Link from "next/link";
 import products from "../products.json";
 
 export default function ProductCard({ product }) {
-  const [bagItems, setBagItems] = useState([]);
-
-  const addToBag = (p) => {
-    // setBagItems([...bagItems, { ...p, qty: 1 }]);
-    // console.log(p);
-
-    const exist = bagItems.find((item) => {
-      Number(item.id) === Number(p.id);
-      // if (item.id === undefined) {
-      //   // item.id = "-99";
-      //   console.log("undefineddd");
-      // } else item.id === p.id;
-    });
-    console.log(exist);
-    if (exist != undefined) {
-      setBagItems(
-        bagItems.map((p) => {
-          console.log(p.id + " " + product.id);
-          p.id === product.id ? { ...exist, qty: p.qty + 1 } : p;
-        })
-      );
-    } else setBagItems([...bagItems, { ...p, qty: 1 }]);
-
-    console.log(bagItems);
-    console.log(bagItems.length);
-  };
-
-  useEffect(() => {
-    console.log("useEffect state", bagItems);
-  }, [bagItems]);
+  const { state, dispatch } = useContext(DataContext);
+  const { cart, auth } = state;
 
   return (
     <>
@@ -56,7 +30,9 @@ export default function ProductCard({ product }) {
             <button
               className="group-hover:opacity-100 show absolute bottom-8 left-2 bg-white text-black font-bold
               md:p-4 p-1 rounded-lg align-center opacity-0 transition-opacity"
-              onClick={() => addToBag(product)}
+              onClick={() => {
+                dispatch(addToCart(product, cart));
+              }}
             >
               Add to bag
             </button>

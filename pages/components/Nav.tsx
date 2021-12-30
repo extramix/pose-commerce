@@ -3,8 +3,6 @@ import Link from "next/link";
 
 import { Icon } from "@iconify/react";
 
-import Modal from "./Modal";
-
 export default function Nav() {
   const [showModal, setShowModal] = useState(false);
 
@@ -38,10 +36,6 @@ export default function Nav() {
             >
               Sign in
             </a>
-            <div>
-              <Modal showModal={showModal} />
-            </div>
-
             <a
               href="#responsive-header"
               className="inline-block mt-4 lg:inline-block lg:mt-0 text-gray-800 hover:text-gray-400 mr-4"
