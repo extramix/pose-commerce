@@ -29,13 +29,15 @@ export default function Nav() {
         <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
           <div className="text-sm lg:flex-grow"></div>
           <div>
-            <a
-              href="#responsive-header"
-              onClick={() => setShowModal(true)}
-              className="block mt-4 lg:inline-block lg:mt-0 text-gray-800 hover:text-gray-400 mr-4"
-            >
-              Sign in
-            </a>
+            <Link href="./Register">
+              <a
+                href="#responsive-header"
+                onClick={() => setShowModal(true)}
+                className="block mt-4 lg:inline-block lg:mt-0 text-gray-800 hover:text-gray-400 mr-4"
+              >
+                Sign in
+              </a>
+            </Link>
             <a
               href="#responsive-header"
               className="inline-block mt-4 lg:inline-block lg:mt-0 text-gray-800 hover:text-gray-400 mr-4"

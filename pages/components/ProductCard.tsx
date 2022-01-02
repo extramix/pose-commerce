@@ -6,8 +6,6 @@ import { addToCart } from "../../store/Actions";
 import Image from "next/image";
 import Link from "next/link";
 
-import products from "../products.json";
-
 export default function ProductCard({ product }) {
   const { state, dispatch } = useContext(DataContext);
   const { cart, auth } = state;

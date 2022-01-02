@@ -1,18 +1,25 @@
-import React from "react";
+import { useContext } from "react";
+
 import { useRouter } from "next/router";
 import Image from "next/image";
 import Link from "next/link";
 
+import { DataContext } from "../../store/GlobalState";
+import { addToCart } from "../../store/Actions";
 import products from "../products.json";
 
 const Product = () => {
   const router = useRouter();
   const { productId } = router.query;
+
+  //FIXME: This is broken. Somehow the data aren't fetch from .json file
+  //TODO: Install serve-json package and create endpoints to fetch using getStaticProps?
   const product = products.find(
-    (product) => parseInt(productId) === parseInt(product.id)
+    (product) => parseInt(productId) == parseInt(product.id)
   );
 
-  const onClick = () => console.log("clicked");
+  const { state, dispatch } = useContext(DataContext);
+  const { cart, auth } = state;
 
   return (
     <>
@@ -34,8 +41,12 @@ const Product = () => {
           <p className="text-4xl mb-2">{product.name}</p>
           <p className="text-xl mb-4">{product.description}</p>
           <p className="text-xl font-bold mb-7">{product.price}</p>
+          {/* TODO: Add to Cart Functionality */}
           <button
-            onClick={onClick}
+            onClick={() => {
+              dispatch(addToCart(product, cart));
+              console.log(state);
+            }}
             className="bg-green-500 hover:bg-green-400 hover:border-green-400 text-white font-bold py-2 px-4 border border-green-500 rounded"
           >
             Add to Bag

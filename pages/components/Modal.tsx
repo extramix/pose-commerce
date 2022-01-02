@@ -5,5 +5,7 @@ export default function Modal({}) {
   const { state, dispatch } = useContext(DataContext);
   const { modal, auth } = state;
 
-  return <></>;
+  return <>
+  <div>Modal pops!</div>
+  </>;
 }
