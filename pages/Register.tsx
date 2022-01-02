@@ -1,12 +1,18 @@
 import { useState, useContext, useRef, useEffect, FormEvent } from "react";
 import { useRouter } from "next/router";
 import { useAuth } from "../contexts/AuthContext";
+
+import { collection, addDoc } from "firebase/firestore";
+import { db } from "../firebase";
+
 export default function Register() {
   // const initialState = { name: "", email: "", password: "", cf_password: "" };
   // const [userData, setUserData] = useState(initialState);
 
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
+  const firstNameRef = useRef<HTMLInputElement>(null);
+  const lastNameRef = useRef<HTMLInputElement>(null);
   const { signup, currentUser } = useAuth();
   const [error, setError] = useState("");
 
@@ -21,6 +27,17 @@ export default function Register() {
     } catch (e) {
       setError("Failed to create an account.");
       console.log(e.message);
+    }
+
+    //database
+    try {
+      const docRef = await addDoc(collection(db, "users"), {
+        first_name: firstNameRef.current.value,
+        last_name: lastNameRef.current.value,
+      });
+      console.log("Document written with ID: ", docRef.id);
+    } catch (e) {
+      console.error("Error adding document: ", e);
     }
   };
 
@@ -48,6 +65,7 @@ export default function Register() {
             <input
               type="firstname"
               id="firstname"
+              ref={firstNameRef}
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
               placeholder="Alex"
               required
@@ -63,6 +81,7 @@ export default function Register() {
             <input
               type="lastname"
               id="lastname"
+              ref={lastNameRef}
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
               placeholder="Pose"
               required
