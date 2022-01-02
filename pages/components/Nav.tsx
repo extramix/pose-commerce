@@ -1,10 +1,25 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 
 import { Icon } from "@iconify/react";
+import { useAuth } from "../../contexts/AuthContext";
+import { auth } from "../../firebase";
 
 export default function Nav() {
   const [showModal, setShowModal] = useState(false);
+  const { signout, currentUser } = useAuth();
+
+  useEffect(() => {
+    console.log(currentUser);
+  }, [currentUser]);
+
+  const handleSignOut = async () => {
+    try {
+      await signout();
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
 
   return (
     <div>
@@ -29,15 +44,30 @@ export default function Nav() {
         <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
           <div className="text-sm lg:flex-grow"></div>
           <div>
-            <Link href="./Register">
-              <a
-                href="#responsive-header"
-                onClick={() => setShowModal(true)}
-                className="block mt-4 lg:inline-block lg:mt-0 text-gray-800 hover:text-gray-400 mr-4"
-              >
-                Sign in
-              </a>
-            </Link>
+            {
+              !currentUser ? (
+                <Link href="./Register">
+                  <a
+                    href="#responsive-header"
+                    onClick={() => setShowModal(true)}
+                    className="block mt-4 lg:inline-block lg:mt-0 text-gray-800 hover:text-gray-400 mr-4"
+                  >
+                    Sign in
+                  </a>
+                </Link>
+              ) : (
+                // <Link href="./Register">
+                <a
+                  href="#responsive-header"
+                  onClick={handleSignOut}
+                  className="block mt-4 lg:inline-block lg:mt-0 text-gray-800 hover:text-gray-400 mr-4"
+                >
+                  Sign out
+                </a>
+              )
+              // </Link>
+            }
+
             <a
               href="#responsive-header"
               className="inline-block mt-4 lg:inline-block lg:mt-0 text-gray-800 hover:text-gray-400 mr-4"

@@ -1,4 +1,5 @@
-import { useState, useContext, useRef, FormEvent } from "react";
+import { useState, useContext, useRef, useEffect, FormEvent } from "react";
+import { useRouter } from "next/router";
 import { useAuth } from "../contexts/AuthContext";
 export default function Register() {
   // const initialState = { name: "", email: "", password: "", cf_password: "" };
@@ -8,6 +9,8 @@ export default function Register() {
   const passwordRef = useRef<HTMLInputElement>(null);
   const { signup, currentUser } = useAuth();
   const [error, setError] = useState("");
+
+  const router = useRouter();
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -20,6 +23,13 @@ export default function Register() {
       console.log(e.message);
     }
   };
+
+  useEffect(() => {
+    if (currentUser) {
+      router.push("/");
+      console.log("currently logged in as " + currentUser.email);
+    }
+  }, [router, currentUser]);
 
   return (
     <div className="grid grid-cols-3">

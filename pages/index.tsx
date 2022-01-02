@@ -6,12 +6,19 @@ import Products from "./products.json";
 import ProductCard from "./components/ProductCard";
 
 import Link from "next/link";
+import { useAuth } from "../contexts/AuthContext";
+
 export default function Home() {
+  const { currentUser } = useAuth();
+
   return (
     <>
       <Head>
         <title>Pose. | FREEDOM-focused Clothing brands</title>
       </Head>
+      {currentUser && (
+        <h2 className="p-2 text-xl">Welcome!, {currentUser.email}</h2>
+      )}
       <h1 className="px-10 py-7 text-5xl text-green-600">
         EXPLORE YOUR FREEDOM.
       </h1>
