@@ -2,8 +2,14 @@ import { Icon } from "@iconify/react";
 import Link from "next/link";
 import React from "react";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 export default function Cart() {
+  const router = useRouter();
+
+  const order = () => {
+    router.push("/Order");
+  };
   return (
     <>
       <div className="hidden fixed p-5">
@@ -114,6 +120,7 @@ export default function Cart() {
               <span className="font-semibold text-gray-900">$200</span>{" "}
               <div>
                 <button
+                  onClick={order}
                   className=" bg-green-500 text-white font-medium
               py-3 px-10 rounded-2xl transition-opacity"
                 >
