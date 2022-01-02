@@ -26,13 +26,14 @@ export default function Home() {
         With this season’s collections, your imagination is endless. Explore our
         new collections starting from today.
       </p>
-
-      <div className="grid grid-cols-3 gap-4 p-12 ">
-        {Products.map((product) => (
-          <div key={product.id}>
-            <ProductCard product={product} />
-          </div>
-        ))}
+      <div className=" lg:mx-18 items-center justify-center mx-auto">
+        <div className="grid grid-cols-3 gap-4 p-12 ">
+          {Products.map((product) => (
+            <div key={product.id}>
+              <ProductCard product={product} />
+            </div>
+          ))}
+        </div>
       </div>
     </>
   );

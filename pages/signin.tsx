@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import React, { FormEvent, useRef, useState } from "react";
+import React, { FormEvent, useEffect, useRef, useState } from "react";
 import { useAuth } from "../contexts/AuthContext";
 
 //FIXME: Fix product not load on [productId]
@@ -18,7 +18,7 @@ import { useAuth } from "../contexts/AuthContext";
 export default function Signin() {
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
-  const { signup, currentUser } = useAuth();
+  const { signin, currentUser } = useAuth();
   const [error, setError] = useState("");
 
   const router = useRouter();
@@ -28,18 +28,25 @@ export default function Signin() {
     console.log(emailRef.current.value + " " + passwordRef.current.value);
     try {
       setError("");
-      await signup(emailRef.current.value, passwordRef.current.value);
+      await signin(emailRef.current.value, passwordRef.current.value);
     } catch (e) {
       setError("Failed to create an account.");
       console.log(e.message);
     }
   };
 
+  useEffect(() => {
+    if (currentUser) {
+      router.push("/");
+      console.log("currently logged in as " + currentUser.email);
+    }
+  }, [router, currentUser]);
+
   return (
-    <div className="w-full p-10 lg:w-3/6 lg:mx-auto lg:max-w-2xl items-center justify-center">
+    <div className="w-full p-10 lg:w-3/6 lg:mx-auto lg:max-w-2xl md:mx-auto md:max-w-xl items-center justify-center">
       <div></div>
       <div className="block border border-gray-200 shadow-md">
-        <form className="p-8">
+        <form onSubmit={handleSubmit} className="p-8">
           <div className="text-xl mb-5">Sign in to our website</div>
           <div className="mb-6">
             <label
@@ -51,6 +58,7 @@ export default function Signin() {
             <input
               type="email"
               id="email"
+              ref={emailRef}
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
               placeholder="alex@pose.com"
               required
@@ -66,6 +74,7 @@ export default function Signin() {
             <input
               type="password"
               id="password"
+              ref={passwordRef}
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
               required
             />
