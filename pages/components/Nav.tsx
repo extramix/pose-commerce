@@ -89,12 +89,14 @@ export default function Nav() {
               href="#responsive-header"
               className="inline-block mt-4 lg:inline-block lg:mt-0 text-gray-800 hover:text-gray-400 mr-4"
             >
-              <div className="static">
-                <Icon icon="bx:bxs-shopping-bags" width="25" height="25" />
-                <span className="absolute right-7 bottom-4 bg-red-500 text-xs text-white px-1 rounded-xl">
-                  1
-                </span>
-              </div>
+              <Link href="./Cart" passHref>
+                <div className="static">
+                  <Icon icon="bx:bxs-shopping-bags" width="25" height="25" />
+                  <span className="absolute right-7 bottom-4 bg-red-500 text-xs text-white px-1 rounded-xl">
+                    1
+                  </span>
+                </div>
+              </Link>
             </a>
           </div>
         </div>
