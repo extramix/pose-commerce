@@ -7,6 +7,7 @@ import { auth } from "../../firebase";
 
 export default function Nav() {
   const [showModal, setShowModal] = useState(false);
+  const [showNav, setShowNav] = useState(false);
   const { signout, currentUser } = useAuth();
 
   useEffect(() => {
@@ -29,8 +30,12 @@ export default function Nav() {
             <span className="font-semibold text-3xl tracking-tight">Pose.</span>
           </div>
         </Link>
+
         <div className="block lg:hidden">
-          <button className="flex items-center px-3 py-2 border rounded text-gray-400 border-gray-400 hover:text-gray-300 hover:border-gray-300">
+          <button
+            className="flex items-center px-3 py-2 border rounded text-gray-400 border-gray-400 hover:text-gray-300 hover:border-gray-300"
+            onClick={() => false}
+          >
             <svg
               className="fill-current h-3 w-3"
               viewBox="0 0 20 20"
@@ -52,7 +57,7 @@ export default function Nav() {
                     onClick={() => setShowModal(true)}
                     className="block mt-4 lg:inline-block lg:mt-0 text-gray-800 hover:text-gray-400 mr-4"
                   >
-                    Sign in
+                    Sign up
                   </a>
                 </Link>
               ) : (
@@ -67,6 +72,18 @@ export default function Nav() {
               )
               // </Link>
             }
+
+            {!currentUser && (
+              <Link href="./Signin">
+                <a
+                  href="#responsive-header"
+                  onClick={() => setShowModal(true)}
+                  className="block mt-4 lg:inline-block lg:mt-0 text-gray-800 hover:text-gray-400 mr-4"
+                >
+                  Sign in
+                </a>
+              </Link>
+            )}
 
             <a
               href="#responsive-header"

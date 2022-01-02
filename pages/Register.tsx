@@ -32,12 +32,13 @@ export default function Register() {
   }, [router, currentUser]);
 
   return (
-    <div className="grid grid-cols-3">
+    <div className="w-full p-10 lg:w-3/6 lg:mx-auto lg:max-w-2xl items-center justify-center">
       {/* <div>{JSON.stringify(currentUser)}</div> */}
       <div></div>
       <div className="block border border-gray-200 shadow-md">
         <form onSubmit={handleSubmit} className="p-8">
           <div className="mb-6">
+            <div className="text-xl mb-5">Sign up for your account</div>
             <label
               htmlFor="firstname"
               className="block mb-2 text-sm font-medium text-gray-900 "
@@ -123,7 +124,6 @@ export default function Register() {
           </button>
         </form>
       </div>
-      <div></div>
     </div>
   );
 }

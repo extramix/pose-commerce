@@ -7,8 +7,7 @@ export default function Layout({ children }) {
   return (
     <div>
       <Nav />
-      <Modal />
-      {children}
+      <Modal>{children}</Modal>
       <Footer />
     </div>
   );

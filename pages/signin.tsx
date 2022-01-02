@@ -1,4 +1,6 @@
-import React from "react";
+import { useRouter } from "next/router";
+import React, { FormEvent, useRef, useState } from "react";
+import { useAuth } from "../contexts/AuthContext";
 
 //FIXME: Fix product not load on [productId]
 //FIXME: Add to Cart Functionality
@@ -14,11 +16,31 @@ import React from "react";
 //TODO: Re-design the product cards
 
 export default function Signin() {
+  const emailRef = useRef<HTMLInputElement>(null);
+  const passwordRef = useRef<HTMLInputElement>(null);
+  const { signup, currentUser } = useAuth();
+  const [error, setError] = useState("");
+
+  const router = useRouter();
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log(emailRef.current.value + " " + passwordRef.current.value);
+    try {
+      setError("");
+      await signup(emailRef.current.value, passwordRef.current.value);
+    } catch (e) {
+      setError("Failed to create an account.");
+      console.log(e.message);
+    }
+  };
+
   return (
-    <div className="grid grid-cols-3">
+    <div className="w-full p-10 lg:w-3/6 lg:mx-auto lg:max-w-2xl items-center justify-center">
       <div></div>
       <div className="block border border-gray-200 shadow-md">
         <form className="p-8">
+          <div className="text-xl mb-5">Sign in to our website</div>
           <div className="mb-6">
             <label
               htmlFor="email"
@@ -56,7 +78,6 @@ export default function Signin() {
                 aria-describedby="remember"
                 type="checkbox"
                 className="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 "
-                required
               />
             </div>
             <div className="ml-3 text-sm">
