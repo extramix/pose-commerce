@@ -17,7 +17,7 @@ export default function ProductCard({ product }) {
           <div className="group cursor-pointer transition duration-200 delay-50 hover:scale-99 ">
             <div className="">
               <Image
-                src={product.src}
+                src={product.img}
                 className="e"
                 alt="Leather Jacket"
                 width="480"

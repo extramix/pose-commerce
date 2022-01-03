@@ -1,17 +1,23 @@
 import { Icon } from "@iconify/react";
 import Link from "next/link";
-import React from "react";
+import React, { useContext } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import { DataContext } from "../store/GlobalState";
 
 export default function Cart() {
   const router = useRouter();
+  const { state, dispatch } = useContext(DataContext);
+  const { cart } = state;
+
+  console.log(cart);
 
   const order = () => {
     router.push("/Order");
   };
   return (
     <>
+      {JSON.stringify(cart)}
       <div className="hidden fixed p-5">
         <div className="mx-auto overflow-y-auto items-center justify-center">
           <Icon icon="feather:shopping-bag" width="100" height="100" />
@@ -57,35 +63,36 @@ export default function Cart() {
                   </div>
                 </div>
               </li>
-
               <li className="py-3 sm:py-4">
-                <div className="flex items-center space-x-4">
-                  <div className="flex-shrink-0">
-                    <Image
-                      src="/products/2.jpeg"
-                      alt="Leather Jacket"
-                      width="40"
-                      height="40"
-                      layout="responsive"
-                    />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <p className="text-sm font-medium text-gray-900 truncate">
-                      Neil Sims
-                    </p>
-                    <p className="text-sm text-gray-500 truncate ">
-                      email@windster.com
-                    </p>
-                  </div>
-                  <div className="inline-flex items-center text-base font-semibold text-gray-900 ">
-                    $320
-                  </div>
-                  <div className="inline-flex items-center text-base font-semibold text-gray-500 ">
-                    Del
-                  </div>
-                </div>
+                {cart.map((product) => {
+                  <div className="flex items-center space-x-4">
+                    <div className="flex-shrink-0">
+                      <Image
+                        src={product.img}
+                        alt={product.name}
+                        width="40"
+                        height="40"
+                        layout="responsive"
+                      />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-sm font-medium text-gray-900 truncate">
+                        {product.name}
+                      </p>
+                      <p className="text-sm text-gray-500 truncate ">
+                        {product.description}
+                      </p>
+                    </div>
+                    <div className="inline-flex items-center text-base font-semibold text-gray-900 ">
+                      {product.price}
+                    </div>
+                    <div className="inline-flex items-center text-base font-semibold text-gray-500 ">
+                      Del
+                    </div>
+                  </div>;
+                })}
               </li>
-
+              ;
               <li className="py-3 sm:py-4">
                 <div className="flex items-center space-x-4">
                   <div className="flex-shrink-0">

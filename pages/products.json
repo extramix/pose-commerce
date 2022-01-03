@@ -4,20 +4,20 @@
       "name": "Leather Jacket",
       "description": "Crafted with the best leather in Italy.",
       "price": "$59.99",
-      "src": "/products/1.jpeg"
+      "img": "/products/1.jpeg"
     },
     {
         "id": 2,
         "name": "Slip-ons",
         "description": "Designed with comforts in mind.",
         "price": "$19.99",
-        "src": "/products/2.jpg"
+        "img": "/products/2.jpg"
       },
       {
         "id": 3,
         "name": "Sleeveless Top",
         "description": "Good for summer.",
         "price": "$29.99",
-        "src": "/products/3.jpg"
+        "img": "/products/3.jpg"
       }
 ]
