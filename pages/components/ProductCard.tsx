@@ -28,7 +28,8 @@ export default function ProductCard({ product }) {
             <button
               className="group-hover:opacity-100 show absolute bottom-8 left-2 bg-white text-black font-bold
               md:p-4 p-1 rounded-lg align-center opacity-0 transition-opacity"
-              onClick={() => {
+              onClick={(e) => {
+                e.stopPropagation();
                 dispatch(addToCart(product, cart));
               }}
             >

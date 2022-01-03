@@ -29,17 +29,25 @@ export const DataProvider = ({ children }) => {
 
   //if there's an update, push to LocalStorage
   useEffect(() => {
-    if (
-      state.cart == null &&
-      JSON.parse(localStorage.getItem("__pose__commerce__cart"))
-    ) {
-      state.cart = localStorage.getItem("__pose__commerce__cart");
-    } else
+    // if (
+    //   state.cart == null &&
+    //   JSON.parse(localStorage.getItem("__pose__commerce__cart"))
+    // ) {
+    //   console.log("no cart but has Storage");
+    //   state.cart = localStorage.getItem("__pose__commerce__cart");
+    // } else
+    //   localStorage.setItem(
+    //     "__pose__commerce__cart",
+    //     JSON.stringify(state.cart)
+    //   );
+    console.log(state.cart);
+    if (state.cart != []) {
       localStorage.setItem(
         "__pose__commerce__cart",
         JSON.stringify(state.cart)
       );
-  }, [state, state.cart]);
+    }
+  }, [state.cart]);
 
   return (
     <DataContext.Provider value={{ state, dispatch }}>

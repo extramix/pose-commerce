@@ -5,6 +5,8 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { DataContext } from "../store/GlobalState";
 
+import { removeFromCart } from "../store/Actions";
+
 export default function Cart() {
   const router = useRouter();
   const [total, setTotal] = useState(0);
@@ -106,7 +108,10 @@ export default function Cart() {
                         {/* {totalEachItem(product.price, product.quantity)} */}
                         ${product.price * product.quantity}
                       </div>
-                      <div className="inline-flex text-base font-semibold text-gray-500 ">
+                      <div
+                        className="inline-flex text-base font-semibold text-gray-500"
+                        onClick={() => dispatch(removeFromCart(product, cart))}
+                      >
                         <Icon
                           className="hover:text-red-500 cursor-pointer transition"
                           icon="bx:bx-trash"

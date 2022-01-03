@@ -9,18 +9,13 @@ export const ACTIONS = {
 };
 
 export const addToCart = (product, cart) => {
-  // if (product.inStock === 0)
-  //   return {
-  //     type: "NOTIFY",
-  //     payload: { error: "This product is out of stock." },
-  //   };
-
   //that product is already in the cart
   if (cart.some((p) => p.id === product.id)) {
     const newCart = [...cart];
     newCart.forEach((item) => {
       if (item.id === product.id) item.quantity += 1;
     });
+
     return {
       type: "ADD_CART",
       payload: newCart,
@@ -30,5 +25,14 @@ export const addToCart = (product, cart) => {
   return {
     type: "ADD_CART",
     payload: [...cart, { ...product, quantity: 1 }],
+  };
+};
+
+export const removeFromCart = (product, cart) => {
+  const newCart = cart.filter((p) => p.id != product.id);
+
+  return {
+    type: "ADD_CART",
+    payload: newCart,
   };
 };
