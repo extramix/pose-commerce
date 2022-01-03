@@ -29,7 +29,6 @@ export default function Cart() {
     getTotal();
   }, [cart]);
 
-  console.log(cart[0].size);
   const order = () => {
     router.push("/Order");
   };
@@ -61,13 +60,12 @@ export default function Cart() {
                   <li className="py-3 sm:py-4" key={product.id}>
                     <div className="flex space-x-4">
                       <div className="flex-shrink-0">
-                        <img
+                        <Image
                           className="max-w-4xl"
                           src={product.img}
                           alt={product.name}
-                          width="120"
-                          height="100"
-                          layout="responsive"
+                          width="150"
+                          height="200"
                         />
                       </div>
                       <div className="flex-1 min-w-0">
