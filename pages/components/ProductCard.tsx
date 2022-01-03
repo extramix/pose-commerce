@@ -39,7 +39,7 @@ export default function ProductCard({ product }) {
         </Link>
 
         <p className="text-right font-medium absolute bottom-6 right-0 bg-white p-1">
-          {product.price}
+          ${product.price}
         </p>
 
         <p className="text-center">{product.name}</p>
