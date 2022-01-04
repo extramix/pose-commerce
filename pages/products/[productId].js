@@ -10,16 +10,18 @@ import { addToCart } from "../../store/Actions";
 import products from "../products.json";
 
 const Product = () => {
+  const { state, dispatch } = useContext(DataContext);
+  const { cart } = state;
   const router = useRouter();
   const { productId } = router.query;
   //FIXME: This is broken. Somehow the data aren't fetch from .json file
   //TODO: Install serve-json package and create endpoints to fetch using getStaticProps?
-
+  if (!productId) {
+    return <></>;
+  }
   const product = products.find(
     (product) => parseInt(productId) == parseInt(product.id)
   );
-  const { state, dispatch } = useContext(DataContext);
-  const { cart } = state;
 
   return (
     <>
