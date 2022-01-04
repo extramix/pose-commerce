@@ -5,35 +5,14 @@ import Image from "next/image";
 import Link from "next/link";
 import Head from "next/head";
 
-import ProductCard from "../components/ProductCard";
-
 import { DataContext } from "../../store/GlobalState";
 import { addToCart } from "../../store/Actions";
 
-// import { getData } from "../api/products/[productId]";
 import products from "../products.json";
 
 const Product = ({ product }) => {
   const { state, dispatch } = useContext(DataContext);
   const { cart } = state;
-
-  // const router = useRouter();
-  // const { productId } = router.query;
-
-  // if (!productId) {
-  //   return <></>;
-  // }
-  // const product = products.find(
-  //   (product) => parseInt(productId) == parseInt(product.id)
-  // );
-
-  // const product = products.find(
-  //   (product) => parseInt(productId) == parseInt(product.id)
-  // );
-
-  //   const product = products.find(
-  //   (product) => parseInt(productId) == parseInt(product.id)
-  // );
 
   return (
     <>
