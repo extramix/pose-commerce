@@ -10,20 +10,30 @@ import ProductCard from "../components/ProductCard";
 import { DataContext } from "../../store/GlobalState";
 import { addToCart } from "../../store/Actions";
 
+// import { getData } from "../api/products/[productId]";
 import products from "../products.json";
 
-const Product = () => {
+const Product = ({ product }) => {
   const { state, dispatch } = useContext(DataContext);
   const { cart } = state;
-  const router = useRouter();
-  const { productId } = router.query;
 
-  if (!productId) {
-    return <></>;
-  }
-  const product = products.find(
-    (product) => parseInt(productId) == parseInt(product.id)
-  );
+  // const router = useRouter();
+  // const { productId } = router.query;
+
+  // if (!productId) {
+  //   return <></>;
+  // }
+  // const product = products.find(
+  //   (product) => parseInt(productId) == parseInt(product.id)
+  // );
+
+  // const product = products.find(
+  //   (product) => parseInt(productId) == parseInt(product.id)
+  // );
+
+  //   const product = products.find(
+  //   (product) => parseInt(productId) == parseInt(product.id)
+  // );
 
   return (
     <>
@@ -66,3 +76,26 @@ const Product = () => {
 };
 
 export default Product;
+
+export async function getStaticPaths() {
+  const paths = products.map((product) => {
+    return {
+      params: {
+        productId: product.id.toString(),
+      },
+    };
+  });
+
+  return {
+    paths: paths,
+    fallback: false,
+  };
+}
+
+export const getStaticProps = async (context) => {
+  const id = context.params.productId;
+  const product = products.find((product) => product.id === parseInt(id));
+  return {
+    props: { product },
+  };
+};
