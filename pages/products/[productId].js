@@ -14,8 +14,7 @@ const Product = () => {
   const { cart } = state;
   const router = useRouter();
   const { productId } = router.query;
-  //FIXME: This is broken. Somehow the data aren't fetch from .json file
-  //TODO: Install serve-json package and create endpoints to fetch using getStaticProps?
+
   if (!productId) {
     return <></>;
   }
@@ -25,7 +24,9 @@ const Product = () => {
 
   return (
     <>
-      <Head>{/* <title>{product.name}</title> */}</Head>
+      <Head>
+        <title>{product.name}</title>
+      </Head>
       <Link href="/" passHref>
         <span className="cursor-pointer underline p-5">Back</span>
       </Link>
