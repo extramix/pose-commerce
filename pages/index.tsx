@@ -28,7 +28,7 @@ export default function Home() {
         new collections starting from today.
       </p>
       <div className=" lg:mx-18 items-center justify-center mx-auto">
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-7 gap-4 p-12 ">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
           {Products.map((product) => (
             <div key={product.id}>
               <ProductCard product={product} />

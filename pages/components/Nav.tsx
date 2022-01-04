@@ -1,14 +1,19 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Link from "next/link";
 
 import { Icon } from "@iconify/react";
 import { useAuth } from "../../contexts/AuthContext";
 import { auth } from "../../firebase";
+import { DataContext } from "../../store/GlobalState";
 
 export default function Nav() {
   const [showModal, setShowModal] = useState(false);
   const [showNav, setShowNav] = useState(false);
+  const [quantities, setQuantities] = useState(0);
   const { signout, currentUser } = useAuth();
+
+  const { state, dispatch } = useContext(DataContext);
+  const { cart, auth } = state;
 
   useEffect(() => {
     console.log(currentUser);
@@ -22,12 +27,31 @@ export default function Nav() {
     }
   };
 
+  // const countCartNum = () => {
+  //   let quantities = 0;
+  //   for (const item in cart) {
+  //     quantities = quantities + parseInt(item.quantity);
+  //   }
+  //   return quantities;
+  // };
+  const countCartNum = () => {
+    const res = cart.reduce((prev, item) => {
+      return prev + item.quantity;
+    }, 0);
+    setQuantities(res);
+  };
+
   return (
     <div>
       <nav className="flex items-center justify-between flex-wrap bg-gray-100 p-4 mb-5 drop-shadow-md">
         <Link href="/" passHref>
           <div className="flex items-center flex-shrink-0 ml-4 mr-6 cursor-pointer">
-            <span className="font-semibold text-3xl tracking-tight">Pose.</span>
+            <span
+              className="font-semibold text-3xl tracking-tight
+            hover:text-green-600 ease-in-out transition"
+            >
+              Pose.
+            </span>
           </div>
         </Link>
 
@@ -55,7 +79,7 @@ export default function Nav() {
                   <a
                     href="#responsive-header"
                     onClick={() => setShowModal(true)}
-                    className="block mt-4 lg:inline-block lg:mt-0 text-gray-800 hover:text-gray-400 mr-4"
+                    className="block mt-4 lg:inline-block lg:mt-0 text-gray-800 hover:text-green-600 hover:text-bold mr-4"
                   >
                     Sign up
                   </a>
@@ -65,7 +89,7 @@ export default function Nav() {
                 <a
                   href="#responsive-header"
                   onClick={handleSignOut}
-                  className="block mt-4 lg:inline-block lg:mt-0 text-gray-800 hover:text-gray-400 mr-4"
+                  className="block mt-4 lg:inline-block lg:mt-0 text-gray-800 hover:text-green-600 hover:text-bold mr-4"
                 >
                   Sign out
                 </a>
@@ -78,7 +102,7 @@ export default function Nav() {
                 <a
                   href="#responsive-header"
                   onClick={() => setShowModal(true)}
-                  className="block mt-4 lg:inline-block lg:mt-0 text-gray-800 hover:text-gray-400 mr-4"
+                  className="block mt-4 lg:inline-block lg:mt-0 text-gray-800 hover:text-green-600 hover:text-bold mr-4"
                 >
                   Sign in
                 </a>
@@ -87,14 +111,22 @@ export default function Nav() {
 
             <a
               href="#responsive-header"
-              className="inline-block mt-4 lg:inline-block lg:mt-0 text-gray-800 hover:text-gray-400 mr-4"
+              className="inline-block mt-4 lg:inline-block lg:mt-0 text-gray-800 mr-4"
             >
               <Link href="/Cart" passHref>
                 <div className="static">
-                  <Icon icon="bx:bxs-shopping-bags" width="25" height="25" />
-                  <span className="absolute right-7 bottom-4 bg-red-500 text-xs text-white px-1 rounded-xl">
-                    1
-                  </span>
+                  <Icon
+                    className="hover:text-green-500 transition"
+                    icon="bx:bxs-shopping-bags"
+                    width="25"
+                    height="25"
+                  />
+                  {cart.length != 0 && (
+                    <span className="absolute right-7 bottom-4 bg-green-500 text-xs text-white px-1 rounded-full">
+                      {/* {quantities} */}
+                      {cart.length}
+                    </span>
+                  )}
                 </div>
               </Link>
             </a>
