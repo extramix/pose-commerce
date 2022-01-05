@@ -2,7 +2,7 @@ import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 
-//  import products from "./products.json";
+import products from "../public/products.json";
 import ProductCard from "../components/ProductCard";
 
 import Link from "next/link";
@@ -11,23 +11,11 @@ import { useAuth } from "../contexts/AuthContext";
 import { promises as fs } from "fs";
 import path from "path";
 
-export default function Home({ products }) {
+export default function Home({}) {
   const { currentUser } = useAuth();
 
   console.log(typeof products);
   console.log(products);
-  //FIXME:
-  const popProducts = () => {
-    for (let i = 0; i < products.length; i++) {
-      {
-        [products].map((product) => (
-          <div key={product.id}>
-            <ProductCard product={product} />
-          </div>
-        ));
-      }
-    }
-  };
 
   return (
     <>
@@ -75,23 +63,23 @@ export default function Home({ products }) {
   );
 }
 
-export const getStaticProps = async () => {
-  // const res = await fetch("/products.json");
-  // const products = JSON.parse(JSON.stringify(res));
-  // console.log(products);
-  // return {
-  //   props: { products: products },
-  // };
-  const filePath = path.join(process.cwd(), "public", "products.json");
-  // const filenames = await fs.readdir(postsDirectory)
-  const fileContents = await fs.readFile(filePath, "utf8");
-  const products = JSON.parse(fileContents);
+// export const getStaticProps = async () => {
+//   // const res = await fetch("/products.json");
+//   // const products = JSON.parse(JSON.stringify(res));
+//   // console.log(products);
+//   // return {
+//   //   props: { products: products },
+//   // };
+//   const filePath = path.join(process.cwd(), "public", "products.json");
+//   // const filenames = await fs.readdir(postsDirectory)
+//   const fileContents = await fs.readFile(filePath, "utf8");
+//   const products = JSON.parse(fileContents);
 
-  // By returning { props: { posts } }, the Blog component
-  // will receive `posts` as a prop at build time
-  return {
-    props: {
-      products,
-    },
-  };
-};
+//   // By returning { props: { posts } }, the Blog component
+//   // will receive `posts` as a prop at build time
+//   return {
+//     props: {
+//       products,
+//     },
+//   };
+// };
