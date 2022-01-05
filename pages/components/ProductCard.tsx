@@ -10,6 +10,7 @@ export default function ProductCard({ product }) {
   const { state, dispatch } = useContext(DataContext);
   const { cart, auth } = state;
 
+  //FIXME:
   return (
     <>
       <div className="relative mb-8 select-none">

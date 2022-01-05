@@ -8,7 +8,7 @@ import Head from "next/head";
 import { DataContext } from "../../store/GlobalState";
 import { addToCart } from "../../store/Actions";
 
-import products from "../products.json";
+import products from "../../public/products.json";
 
 const Product = ({ product }) => {
   const { state, dispatch } = useContext(DataContext);
