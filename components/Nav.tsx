@@ -74,7 +74,7 @@ export default function Nav() {
           <div className="text-sm md:flex-grow"></div>
           <div>
             {!currentUser ? (
-              <Link href="/register">
+              <Link href="/Register">
                 <a
                   href="#responsive-header"
                   onClick={() => setShowModal(true)}
@@ -109,7 +109,7 @@ export default function Nav() {
               href="#responsive-header"
               className="inline-block mt-4 md:inline-block md:mt-0 text-gray-800 mr-4"
             >
-              <Link href="/cart" passHref>
+              <Link href="/Cart" passHref>
                 <div className="static">
                   <Icon
                     className="hover:text-green-500 transition"
