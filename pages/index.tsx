@@ -36,18 +36,7 @@ export default function Home({ products }) {
       <div className=" lg:mx-18 items-center justify-center mx-auto">
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
           {/* FIXME: */}
-          {/* {products.map((product) => (
-            
-            
-            <div key={product.id}>
-              <ProductCard product={product} />
-            </div>
-
-          )
-
-          )
-          } */}
-
+          {/* 
           {products.map((product) => {
             console.log("staticProps: " + product);
             return (
@@ -55,7 +44,7 @@ export default function Home({ products }) {
                 <ProductCard product={product} />
               </div>
             );
-          })}
+          })} */}
         </div>
       </div>
     </>
