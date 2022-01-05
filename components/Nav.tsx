@@ -2,9 +2,9 @@ import { useState, useEffect, useContext } from "react";
 import Link from "next/link";
 
 import { Icon } from "@iconify/react";
-import { useAuth } from "../../contexts/AuthContext";
-import { auth } from "../../firebase";
-import { DataContext } from "../../store/GlobalState";
+import { useAuth } from "contexts/AuthContext";
+import { auth } from "../firebase";
+import { DataContext } from "store/GlobalState";
 
 export default function Nav() {
   const [showModal, setShowModal] = useState(false);

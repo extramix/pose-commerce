@@ -3,7 +3,7 @@ import Image from "next/image";
 import styles from "../styles/Home.module.css";
 
 //  import products from "./products.json";
-import ProductCard from "./components/ProductCard";
+import ProductCard from "../components/ProductCard";
 
 import Link from "next/link";
 import { useAuth } from "../contexts/AuthContext";
@@ -62,7 +62,7 @@ export default function Home({ products }) {
           } */}
 
           {products.map((product) => {
-            console.log(product);
+            console.log("staticProps: " + product);
             return (
               <div key={product.id}>
                 <ProductCard product={product} />
@@ -85,7 +85,6 @@ export const getStaticProps = async () => {
   const filePath = path.join(process.cwd(), "public", "products.json");
   // const filenames = await fs.readdir(postsDirectory)
   const fileContents = await fs.readFile(filePath, "utf8");
-  // const products = JSON.parse(JSON.parse(JSON.stringify(fileContents)));
   const products = JSON.parse(fileContents);
 
   // By returning { props: { posts } }, the Blog component

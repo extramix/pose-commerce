@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { DataContext } from "../../store/GlobalState";
+import { DataContext } from "store/GlobalState";
 
 export default function Modal({ children }) {
   const { state, dispatch } = useContext(DataContext);

@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect, useContext } from "react";
-import { DataContext } from "../../store/GlobalState";
-import { addToCart } from "../../store/Actions";
+import { DataContext } from "store/GlobalState";
+import { addToCart } from "store/Actions";
 
 import Image from "next/image";
 import Link from "next/link";
