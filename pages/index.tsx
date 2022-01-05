@@ -13,9 +13,6 @@ import path from "path";
 export default function Home({ products }) {
   const { currentUser } = useAuth();
 
-  console.log(typeof products);
-  console.log(products);
-
   return (
     <>
       <Head>
@@ -36,15 +33,14 @@ export default function Home({ products }) {
       <div className=" lg:mx-18 items-center justify-center mx-auto">
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
           {/* FIXME: */}
-          {/* 
+
           {products.map((product) => {
-            console.log("staticProps: " + product);
             return (
               <div key={product.id}>
                 <ProductCard product={product} />
               </div>
             );
-          })} */}
+          })}
         </div>
       </div>
     </>

@@ -16,14 +16,14 @@ export default function Nav() {
   const { cart, auth } = state;
 
   useEffect(() => {
-    console.log(currentUser);
+    // console.log(currentUser);
   }, [currentUser]);
 
   const handleSignOut = async () => {
     try {
       await signout();
     } catch (err) {
-      console.log(err.message);
+      // console.log(err.message);
     }
   };
 
@@ -55,7 +55,7 @@ export default function Nav() {
           </div>
         </Link>
 
-        <div className="block lg:hidden">
+        <div className="block md:hidden">
           <button
             className="flex items-center px-3 py-2 border rounded text-gray-400 border-gray-400 hover:text-gray-300 hover:border-gray-300"
             onClick={() => false}
@@ -70,8 +70,8 @@ export default function Nav() {
             </svg>
           </button>
         </div>
-        <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
-          <div className="text-sm lg:flex-grow"></div>
+        <div className="w-full block flex-grow md:flex md:items-center md:w-auto">
+          <div className="text-sm md:flex-grow"></div>
           <div>
             {
               !currentUser ? (
@@ -79,7 +79,7 @@ export default function Nav() {
                   <a
                     href="#responsive-header"
                     onClick={() => setShowModal(true)}
-                    className="block mt-4 lg:inline-block lg:mt-0 text-gray-800 hover:text-green-600 hover:text-bold mr-4"
+                    className="block mt-4 md:inline-block md:mt-0 text-gray-800 hover:text-green-600 hover:text-bold mr-4"
                   >
                     Sign up
                   </a>
@@ -89,7 +89,7 @@ export default function Nav() {
                 <a
                   href="#responsive-header"
                   onClick={handleSignOut}
-                  className="block mt-4 lg:inline-block lg:mt-0 text-gray-800 hover:text-green-600 hover:text-bold mr-4"
+                  className="block mt-4 md:inline-block md:mt-0 text-gray-800 hover:text-green-600 hover:text-bold mr-4"
                 >
                   Sign out
                 </a>
@@ -102,7 +102,7 @@ export default function Nav() {
                 <a
                   href="#responsive-header"
                   onClick={() => setShowModal(true)}
-                  className="block mt-4 lg:inline-block lg:mt-0 text-gray-800 hover:text-green-600 hover:text-bold mr-4"
+                  className="block mt-4 md:inline-block md:mt-0 text-gray-800 hover:text-green-600 hover:text-bold mr-4"
                 >
                   Sign in
                 </a>
@@ -111,7 +111,7 @@ export default function Nav() {
 
             <a
               href="#responsive-header"
-              className="inline-block mt-4 lg:inline-block lg:mt-0 text-gray-800 mr-4"
+              className="inline-block mt-4 md:inline-block md:mt-0 text-gray-800 mr-4"
             >
               <Link href="/Cart" passHref>
                 <div className="static">
