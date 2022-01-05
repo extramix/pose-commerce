@@ -129,11 +129,6 @@ export default function Register() {
                 required
               />
             </div>
-            <div className="ml-3 text-sm">
-              <label htmlFor="remember" className="font-medium text-gray-900">
-                Remember me
-              </label>
-            </div>
           </div>
           <button
             type="submit"

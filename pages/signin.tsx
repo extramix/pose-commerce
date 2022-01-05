@@ -76,11 +76,6 @@ export default function Signin() {
                 className="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 "
               />
             </div>
-            <div className="ml-3 text-sm">
-              <label htmlFor="remember" className="font-medium text-gray-900">
-                Remember me
-              </label>
-            </div>
           </div>
           <button
             type="submit"

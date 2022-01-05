@@ -73,29 +73,25 @@ export default function Nav() {
         <div className="w-full block flex-grow md:flex md:items-center md:w-auto">
           <div className="text-sm md:flex-grow"></div>
           <div>
-            {
-              !currentUser ? (
-                <Link href="./Register">
-                  <a
-                    href="#responsive-header"
-                    onClick={() => setShowModal(true)}
-                    className="block mt-4 md:inline-block md:mt-0 text-gray-800 hover:text-green-600 hover:text-bold mr-4"
-                  >
-                    Sign up
-                  </a>
-                </Link>
-              ) : (
-                // <Link href="./Register">
+            {!currentUser ? (
+              <Link href="/register">
                 <a
                   href="#responsive-header"
-                  onClick={handleSignOut}
+                  onClick={() => setShowModal(true)}
                   className="block mt-4 md:inline-block md:mt-0 text-gray-800 hover:text-green-600 hover:text-bold mr-4"
                 >
-                  Sign out
+                  Sign up
                 </a>
-              )
-              // </Link>
-            }
+              </Link>
+            ) : (
+              <a
+                href="#responsive-header"
+                onClick={handleSignOut}
+                className="block mt-4 md:inline-block md:mt-0 text-gray-800 hover:text-green-600 hover:text-bold mr-4"
+              >
+                Sign out
+              </a>
+            )}
 
             {!currentUser && (
               <Link href="./signin">
@@ -113,7 +109,7 @@ export default function Nav() {
               href="#responsive-header"
               className="inline-block mt-4 md:inline-block md:mt-0 text-gray-800 mr-4"
             >
-              <Link href="/Cart" passHref>
+              <Link href="/cart" passHref>
                 <div className="static">
                   <Icon
                     className="hover:text-green-500 transition"

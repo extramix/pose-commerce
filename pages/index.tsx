@@ -20,7 +20,7 @@ export default function Home({ products }) {
         <link rel="icon" href="/logo.svg" type="image/svg+xml"></link>
       </Head>
       {currentUser && (
-        <h2 className="p-2 text-xl">Welcome!, {currentUser.email}</h2>
+        <h2 className="p-2 text-xl">Welcome, {currentUser.email}!</h2>
       )}
       <h1 className="px-10 py-7 text-5xl text-green-600">
         EXPLORE YOUR FREEDOM.
