@@ -74,7 +74,7 @@ export default function Nav() {
           <div className="text-sm md:flex-grow"></div>
           <div>
             {!currentUser ? (
-              <Link href="/register">
+              <Link href="./register">
                 <a
                   href="#responsive-header"
                   onClick={() => setShowModal(true)}
