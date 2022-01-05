@@ -2,19 +2,6 @@ import { useRouter } from "next/router";
 import React, { FormEvent, useEffect, useRef, useState } from "react";
 import { useAuth } from "../contexts/AuthContext";
 
-//FIXME: Fix product not load on [productId]
-//FIXME: Add to Cart Functionality
-
-//TODO: Design a sign-in,login page. Could be just a modal for a good UX
-//TODO: Design a checkout page **Payment function related
-
-//TODO: Authentication using Firebase **LERAN FIREBASE AUTH
-//TODO: Serves different carts for each user
-//TODO: BONUS-> Payment functionallity. Maybe Paypal or Stripe
-
-//TODO: add size selection
-//TODO: Re-design the product cards
-
 export default function Signin() {
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);

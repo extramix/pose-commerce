@@ -98,7 +98,7 @@ export default function Nav() {
             }
 
             {!currentUser && (
-              <Link href="/Signin">
+              <Link href="./signin">
                 <a
                   href="#responsive-header"
                   onClick={() => setShowModal(true)}
